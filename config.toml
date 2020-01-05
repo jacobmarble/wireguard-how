@@ -1,0 +1,7 @@
+baseURL = "https://wireguard.how/"
+title = "WireGuard.How"
+theme = "book"
+
+[params]
+  BookSection = '*'
+  BookLogo = 'logo.png'

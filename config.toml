@@ -1,7 +1,11 @@
 baseURL = "https://wireguard.how/"
 title = "WireGuard.How"
 theme = "book"
+ignoreFiles = ["^.+/content/snippet/.+$"]
+
+[taxonomies]
 
 [params]
   BookSection = '*'
-  BookLogo = 'logo.png'
+  BookSearch = false
+  BookDisqus = false

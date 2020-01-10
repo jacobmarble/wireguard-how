@@ -1,0 +1,10 @@
+{{ with path.Join "snippet" (.Get 0) }}
+    {{ if not (fileExists .) }}
+        {{ errorf "unknown snippet %s" . }}
+    {{ end }}
+    {{ $p := readFile . }}
+    {{ range $k, $v := $.Site.Data.keys }}
+        {{ $p = replace $p $k $v }}
+    {{ end }}
+    {{ $p | markdownify }}
+{{ end }}

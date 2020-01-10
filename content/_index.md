@@ -1,15 +1,62 @@
 ---
 type: docs
+title: "Jacob's WireGuard VPN Guide"
+bookToc: false
 ---
 
-# Lorem Ipsum
+# Jacob's WireGuard VPN Guide
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+These guides assume some experience with Linux.
+[Contact me](/contact) if you see something wrong or missing.
 
-Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. In hac habitasse platea dictumst.
+Be sure to read [What is WireGuard?](/meta/what)
+if you aren't certain that you need WireGuard.
+You might not.
 
-In publishing and graphic design, lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used before final copy is available, but it may also be used to temporarily replace copy in a process called greeking, which allows designers to consider form without the meaning of the text influencing the design.
+## How to Use This Site
 
-Lorem ipsum is typically a corrupted version of De finibus bonorum et malorum, a first-century BC text by Cicero, with words altered, added, and removed to make it nonsensical, improper Latin.
+The tutorials are categorized: server, client, network.
+Follow a server tutorial, then a client tutorial, then a network tutorial,
+and you should have a working VPN.
 
-Versions of the lorem ipsum text have been used in typesetting at least since the 1960s, when it was popularized by advertisements for Letraset transfer sheets. Lorem ipsum was introduced to the digital world in the mid-1980s when Aldus employed it in graphic and word-processing templates for its desktop publishing program PageMaker. Other popular word processors including Pages and Microsoft Word have since adopted lorem ipsum as well. The Adobe corporation also uses lorem ipsum as a placeholder text in their Photoshop product. 
+### 1) Server
+
+First, setup a WireGuard server.
+
+WireGuard performs very well on Linux hosts because it's implemented as a virtual network interface in a kernel module.
+For consistency, the server guides favor [the Debian distribution](https://www.debian.org/), release 10/Buster.
+You may need to adjust if that doesn't work for your situation.
+The WireGuard server is one end of the secure network tunnel.
+
+Follow whichever server guide fits your situation best.
+When you complete any server guide, you'll have a WireGuard server ready for clients.
+
+### 2) Client
+
+Second, configure a client.
+
+A WireGuard client is a device with a problem that can be solved by
+opening a tunnel to the WireGuard server.
+A client is most often a laptop or mobile device.
+Easy-to-install apps exist for the major platforms.
+
+When you complete any client guide,
+the client will have access to the WireGuard server,
+and no other resources on the server end of the tunnel.
+
+### 3) Network Configuration
+
+Third, adjust network settings to fulfill your VPN requirements.
+
+Before this step, the server provides access to:
+- other services running on the WireGuard host
+- (optional) its private network
+- (optional) the public internet
+
+If you installed the WireGuard server on the only system that the client needs to reach,
+like a file server or Minecraft server, then skip this step.
+
+If the client needs access to the server's private network, follow the TODO guide.
+
+If the client needs access to the public internet, complete the TODO guide
+and then follow the TODO2 guide.

@@ -1,0 +1,16 @@
+{
+  "server-private": "qPF9uU7qsCbw3uKR1t2Q0gfr2HasTKZGPkCHz2AszUs=",
+  "server-public": "2efuG9OYmMPQpbkJ8CVxGlvQflY6p1u+o4wjcgGII0A=",
+  "client-private": "oBkgA+KZU6mWY5p7d0PEWxnYkihBw9TmHZXEYnQkz3g=",
+  "client-public": "IVZrsrnY/9jzgdGdOdkKonwfCs2ZcopM9xC1OizE6Wo=",
+  "server-public-address": "35.36.37.38",
+  "server-private-address": "192.168.10.100",
+  "server-private-gateway-address": "192.168.10.1",
+  "server-private-network": "192.168.10.0/24",
+  "server-port": "51820",
+  "vpn-address": "10.0.2.0",
+  "server-vpn-address": "10.0.2.1",
+  "client-vpn-address": "10.0.2.2",
+  "vpn-size": "24",
+  "vpn-broadcast-address": "10.0.2.255"
+}

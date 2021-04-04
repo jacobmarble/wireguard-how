@@ -11,3 +11,5 @@ To test your change before opening a pull request,
 [install `hugo`](https://gohugo.io/getting-started/installing/)
 and run `hugo --buildDrafts --disableFastRender`,
 then point your browser to http://localhost:1313 .
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.

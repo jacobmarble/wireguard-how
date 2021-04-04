@@ -1,5 +1,7 @@
 # WireGuard.How
 
+![cc-by-nc-sa-4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/205ed7c2-8dd3-470d-9ab3-edd60652de13/deploy-status)](https://app.netlify.com/sites/wireguard-how/deploys)
 
 This site is an attempt to make WireGuard useful to a few more people.

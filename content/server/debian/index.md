@@ -77,7 +77,53 @@ In the above example, the group `sudo` appears where it was missing before.
 
 ### Install WireGuard
 
-{{< snippet server-debian-install-wireguard.md >}}
+To install a recent version of WireGuard, we'll need packages from the Debian buster-backports repository.
+Add the backports repository, and [pin the backports priority behind stable](https://wiki.debian.org/AptConfiguration).
+This allows us to install selected packages that are not available in Debian stable,
+while keeping the "stable" versions of everything else.
+
+```text
+$ sudo sh -c "echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list.d/backports.list"
+$ sudo sh -c "printf 'Package: *\nPin: release a=buster-backports\nPin-Priority: 90\n' >> /etc/apt/preferences.d/limit-backports"
+```
+
+Update package information from both stable and unstable package repositories.
+```text
+$ sudo apt update
+Hit:1 http://deb.debian.org/debian buster InRelease
+Hit:2 http://deb.debian.org/debian buster-updates InRelease
+Hit:3 http://security.debian.org/debian-security buster/updates InRelease
+Hit:4 http://deb.debian.org/debian buster-backports InRelease
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+All packages are up to date.
+```
+
+Install the WireGuard packages.
+After this step, `man wg` and `man wg-quick` will work and the `wg` command gets bash completion.
+```text
+$ sudo apt install wireguard --assume-yes
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  dkms linux-compiler-gcc-8-x86 linux-headers-4.19.0-16-amd64 linux-headers-4.19.0-16-common linux-headers-amd64 linux-kbuild-4.19 wireguard-dkms wireguard-tools
+Suggested packages:
+  python3-apport menu openresolv | resolvconf
+The following NEW packages will be installed:
+  dkms linux-compiler-gcc-8-x86 linux-headers-4.19.0-16-amd64 linux-headers-4.19.0-16-common linux-headers-amd64 linux-kbuild-4.19 wireguard wireguard-dkms wireguard-tools
+0 upgraded, 9 newly installed, 0 to remove and 0 not upgraded.
+...
+DKMS: install completed.
+Setting up wireguard-tools (1.0.20210223-1~bpo10+1) ...
+wg-quick.target is a disabled or a static unit, not starting it.
+Setting up linux-headers-4.19.0-16-common (4.19.181-1) ...
+Setting up wireguard (1.0.20210223-1~bpo10+1) ...
+Setting up linux-headers-4.19.0-16-amd64 (4.19.181-1) ...
+Setting up linux-headers-amd64 (4.19+105+deb10u11) ...
+Processing triggers for man-db (2.8.5-2) ...
+```
 
 ### Create Keys
 

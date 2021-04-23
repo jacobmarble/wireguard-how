@@ -101,7 +101,7 @@ Back in the macOS client tunnel manager, click the "Activate" button.
 
 ## Test the Tunnel from the Server
 
-
+(TODO)
 
 ## Test the Tunnel from the Client
 

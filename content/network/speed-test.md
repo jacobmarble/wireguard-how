@@ -42,7 +42,7 @@ In this example:
 - `--omit 1` the first sample is omitted from the summary
 - `--parallel 2` two network streams are run concurrently
 - `--time 5` test is run for 5 seconds
-- `--reverse` we're testing download (omit `-R` to test upload)
+- `--reverse` we're testing download (leave this out to test upload)
 - resulting average download speed is about 30 megabits per second
 
 ```text

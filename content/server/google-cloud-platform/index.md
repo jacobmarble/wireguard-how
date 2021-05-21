@@ -120,24 +120,6 @@ Under the "Connect" column, click "SSH", or use the `gcloud` command via your lo
 
 {{< snippet server-debian-install-wireguard.md >}}
 
-Also install linux-headers-VERSION, as it seems the
-[Debian WireGuard packages don't declare that dependency, or it's just broken in GCP](https://stackoverflow.com/questions/37570910/rtnetlink-answers-operation-not-supported).
-
-```text
-$ sudo apt install linux-headers-$(uname -r)
-Reading package lists... Done
-Building dependency tree       
-Reading state information... Done
-The following NEW packages will be installed:
-...
-Fetched 556 kB in 0s (7381 kB/s)                       
-Selecting previously unselected package linux-headers-4.19.0-6-cloud-amd64.
-(Reading database ... 60668 files and directories currently installed.)
-Preparing to unpack .../linux-headers-4.19.0-6-cloud-amd64_4.19.67-2+deb10u2_amd64.deb ...
-Unpacking linux-headers-4.19.0-6-cloud-amd64 (4.19.67-2+deb10u2) ...
-Setting up linux-headers-4.19.0-6-cloud-amd64 (4.19.67-2+deb10u2) ...
-```
-
 ### Create Keys
 
 {{< snippet server-debian-create-keys.md >}}

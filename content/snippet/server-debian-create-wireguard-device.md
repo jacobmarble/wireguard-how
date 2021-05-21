@@ -38,6 +38,30 @@ Start WireGuard.
 $ sudo ifup wg0
 ```
 
+If this fails, then install package `linux-headers-VERSION`. It seems that the
+[Debian WireGuard packages don't declare that dependency, or it's just broken in GCP](https://stackoverflow.com/questions/37570910/rtnetlink-answers-operation-not-supported).
+
+```text
+$ sudo ifup wg0
+RTNETLINK answers: Operation not supported
+ifup: failed to bring up wg0
+
+$ sudo apt install linux-headers-$(uname -r)
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following NEW packages will be installed:
+...
+Fetched 556 kB in 0s (7381 kB/s)                       
+Selecting previously unselected package linux-headers-4.19.0-6-cloud-amd64.
+(Reading database ... 60668 files and directories currently installed.)
+Preparing to unpack .../linux-headers-4.19.0-6-cloud-amd64_4.19.67-2+deb10u2_amd64.deb ...
+Unpacking linux-headers-4.19.0-6-cloud-amd64 (4.19.67-2+deb10u2) ...
+Setting up linux-headers-4.19.0-6-cloud-amd64 (4.19.67-2+deb10u2) ...
+
+$ sudo ifup wg0
+```
+
 At any time, verify that the WireGuard configuration for `wg0` is what you expect:
 ```text
 $ sudo wg show wg0

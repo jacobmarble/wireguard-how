@@ -6,5 +6,3 @@ type: "docs"
 ---
 
 # Client Guides
-
-Foo

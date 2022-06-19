@@ -5,7 +5,7 @@ type: "docs"
 
 # WireGuard Client: Debian
 
-In this tutorial, we setup a WireGuard client on a Debian client.
+In this tutorial, we setup a WireGuard client on a computer running Debian.
 Before following this tutorial, you should already have a working [WireGuard server running](/server).
 This example uses "vanilla" Debian Buster.
 
@@ -74,29 +74,6 @@ In the above example, the group `sudo` appears where it was missing before.
 
 ### Install WireGuard
 
-To install a recent version of WireGuard, we'll need packages from the Debian buster-backports repository.
-Add the backports repository, and [pin the backports priority behind stable](https://wiki.debian.org/AptConfiguration).
-This allows us to install selected packages that are not available in Debian stable,
-while keeping the "stable" versions of everything else.
-
-```text
-$ sudo sh -c "echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list.d/backports.list"
-$ sudo sh -c "printf 'Package: *\nPin: release a=buster-backports\nPin-Priority: 90\n' >> /etc/apt/preferences.d/limit-backports"
-```
-
-Update package information from both stable and unstable package repositories.
-```text
-$ sudo apt update
-Hit:1 http://deb.debian.org/debian buster InRelease
-Hit:2 http://deb.debian.org/debian buster-updates InRelease
-Hit:3 http://security.debian.org/debian-security buster/updates InRelease
-Hit:4 http://deb.debian.org/debian buster-backports InRelease
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-All packages are up to date.
-```
-
 Install the WireGuard packages.
 After this step, `man wg` and `man wg-quick` will work and the `wg` command gets bash completion.
 ```text
@@ -124,7 +101,9 @@ Processing triggers for man-db (2.8.5-2) ...
 
 ## Get the Server Public Key
 
-From the server, print the server's public key.
+(We're on the server for this section.)
+
+Print the server's public key.
 We'll need this soon.
 ```text
 $ sudo wg show wg0
@@ -134,13 +113,27 @@ interface: wg0
   listening port: {{< lookup server-port >}}
 ```
 
-### Create the Client Keys
-
-{{< snippet server-debian-create-keys.md >}}
-
 ## Configure the Client
 
-Create the WireGuard service config file at `/etc/wireguard/wg0.conf`.
+(We're back on the client for this section.)
+
+### Create Client Keys
+
+In every client/server relationship, each peer has its own private and public keys.
+Create private and public keys for the WireGuard client service.
+Protect the private key with a file mode creation mask.
+```text
+$ (umask 077 && wg genkey > wg-private.key)
+$ wg pubkey < wg-private.key > wg-public.key
+```
+
+Print the private key, we'll need it soon.
+```text
+$ cat wg-private.key
+{{< lookup client-private >}}
+```
+
+Create the WireGuard client service config file at `/etc/wireguard/wg0.conf`.
 (Use a command like `sudo nano /etc/wireguard/wg0.conf`.)
 ```text
 # define the local WireGuard interface (client)

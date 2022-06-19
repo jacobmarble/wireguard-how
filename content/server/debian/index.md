@@ -77,29 +77,6 @@ In the above example, the group `sudo` appears where it was missing before.
 
 ### Install WireGuard
 
-To install a recent version of WireGuard, we'll need packages from the Debian buster-backports repository.
-Add the backports repository, and [pin the backports priority behind stable](https://wiki.debian.org/AptConfiguration).
-This allows us to install selected packages that are not available in Debian stable,
-while keeping the "stable" versions of everything else.
-
-```text
-$ sudo sh -c "echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list.d/backports.list"
-$ sudo sh -c "printf 'Package: *\nPin: release a=buster-backports\nPin-Priority: 90\n' >> /etc/apt/preferences.d/limit-backports"
-```
-
-Update package information from both stable and unstable package repositories.
-```text
-$ sudo apt update
-Hit:1 http://deb.debian.org/debian buster InRelease
-Hit:2 http://deb.debian.org/debian buster-updates InRelease
-Hit:3 http://security.debian.org/debian-security buster/updates InRelease
-Hit:4 http://deb.debian.org/debian buster-backports InRelease
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-All packages are up to date.
-```
-
 Install the WireGuard packages.
 After this step, `man wg` and `man wg-quick` will work and the `wg` command gets bash completion.
 ```text

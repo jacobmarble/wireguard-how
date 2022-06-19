@@ -1,4 +1,4 @@
-In every client/server relationship, each peer has it's own private and public keys.
+In every client/server relationship, each peer has its own private and public keys.
 Create private and public keys for the WireGuard service.
 Protect the private key with a file mode creation mask.
 ```text

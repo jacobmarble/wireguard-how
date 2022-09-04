@@ -31,7 +31,7 @@ Before that, it's important to note that a VPN:
 
 If the above bullets don't sound right to you,
 Sven Slootweg [wrote a gist](https://gist.github.com/joepie91/5a9909939e6ce7d09e29) and
-Dennis Schubert [wrote a blog post](https://gist.github.com/joepie91/5a9909939e6ce7d09e29)
+Dennis Schubert [wrote a blog post](https://overengineer.dev/blog/2019/04/08/very-precarious-narrative.html)
 that help dismantle some of the common misinformation about VPNs.
 [Contact me](/contact) if you're aware of another link that should be added to this list.
 

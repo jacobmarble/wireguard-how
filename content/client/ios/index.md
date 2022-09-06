@@ -23,6 +23,8 @@ interface: wg0
 
 ## Create Client Keys
 
+Stay at the server console, we'll generate the client keys from here.
+
 Create private and public keys for the WireGuard client.
 Protect the private key with a file mode creation mask.
 ```text
@@ -38,8 +40,11 @@ $ cat wg-private-client.key
 
 ## Create the Client WireGuard Config
 
+We're still on the server for this step.
+
 Create the WireGuard client config file at `~/wg-client.conf`.
-(Use a command like `nano ~/wg-client.conf`.)
+(Use a command like `nano ~/wg-client.conf`,
+or protect the file read permissions with `umask 077 && nano ~/wg-client.conf`.)
 Notice the syntax of the client config is the same as the server config.
 ```text
 # define the local WireGuard interface (client)
@@ -54,7 +59,7 @@ Address={{< lookup client-vpn-address >}}/32
 # define the remote WireGuard interface (server)
 [Peer]
 
-# from `sudo wg show wg0`
+# from `sudo wg show wg0 public-key`
 PublicKey = {{< lookup server-public >}}
 
 # the IP address of the server on the WireGuard network 
@@ -91,7 +96,9 @@ Apply the server config change.
 $ sudo wg syncconf wg0 /etc/wireguard/wg0.conf
 ```
 
-## Add the Config to the iOS Device
+## Prepare the Client Config for the iOS Device
+
+One more step on the server.
 
 The client config file is on the server.
 The easy way to copy that config to the client is via QR code.
@@ -113,7 +120,7 @@ Processing triggers for libc-bin (2.28-10+rpi1) ...
 
 Print the QR code in the server terminal.
 ```text
-$ qrencode --read-from=wg-client.conf --type=UTF8 --level=M
+$ qrencode --read-from=wg-client.conf --type=UTF8
 █████████████████████████████████████████████████████████████████
 █████████████████████████████████████████████████████████████████
 ████ ▄▄▄▄▄ █▄▀▄█ ▀▄ █ ▀  █▀▄   ▀ █▄█▀█ ▄█▄▄█ █▄▀ ▄▄ ██ ▄▄▄▄▄ ████
@@ -150,6 +157,8 @@ $ qrencode --read-from=wg-client.conf --type=UTF8 --level=M
 ```
 
 ## Import Client Config
+
+Finally, we switch to the client.
 
 From the WireGuard iOS app, tap "Add a Tunnel", or tap the plus symbol at the upper right corner.
 In the dialog, tap "Create from QR code".
